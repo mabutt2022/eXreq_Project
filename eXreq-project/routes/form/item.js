@@ -3,11 +3,9 @@ var router = express.Router();
 var itemCtrl = require('../../controller/additem');
 
 /* GET home page. */
-router.get("/additem", function (req, res, next) {
-  res.render("form/item", { title: "purchase-form" });
-});
+router.get("/form/additem/:user", itemCtrl.index);
 
-router.post('/additem', itemCtrl.createItem)
+router.post('/additem/:user', itemCtrl.createItem)
 
 
 module.exports = router;

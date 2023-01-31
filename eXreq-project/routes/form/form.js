@@ -3,11 +3,9 @@ var router = express.Router();
 var formCtrl = require('../../controller/form');
 
 /* GET home page. */
-router.get("/form", function (req, res, next) {
-  res.render("form/index", { title: "submission-form" });
-});
+router.get("/form/:user/", formCtrl.index);
 
-router.post('/form/:id', formCtrl.createForm)
+router.post('/form/:user/', formCtrl.createForm)
 
 
 module.exports = router;

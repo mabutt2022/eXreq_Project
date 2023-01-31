@@ -3,10 +3,8 @@ var router = express.Router();
 var userCtrl = require('../../controller/adduser');
 
 /* GET home page. */
-router.get("/adduser", function (req, res, next) {
-  res.render("form/user", { title: "user-form" });
-});
+router.get("/form/adduser/:user", userCtrl.index);
 
-router.post('/adduser', userCtrl.createUser)
+router.post('/adduser/:user', userCtrl.createUser)
 
 module.exports = router;

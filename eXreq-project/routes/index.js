@@ -7,6 +7,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'eXreq' });
 });
 
-router.post('/login', indexCtrl.authenticate_temp)
+router.post('/login', indexCtrl.authenticate)
 
 module.exports = router;
