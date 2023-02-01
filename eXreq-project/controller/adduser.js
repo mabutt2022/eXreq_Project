@@ -1,8 +1,8 @@
 const Account = require("../model/account");
 
 function createUser(req, res, next) {
-    console.log(req.body);
-    console.log(req.params.user);
+    // console.log(req.body);
+    // console.log(req.params.user);
     const account = new Account(req.body);
     account.save(function (err) {
         if (err) return console.log(err);
@@ -13,15 +13,22 @@ function createUser(req, res, next) {
 function index (req, res, next) {
     const id = req.params.user;
     Account.findOne({_id: id}, function(err, access) {
-        if (access.admin === 'Y') {
-            res.render("form/user", { title: "add-item", user: req.params.user, admin: 'Y' })
-        } else {
-            res.render("form/user", { title: "add-item", user: req.params.user, admin: 'N' });
-        }       
+        res.render("user/index", { title: "add-item", user: req.params.user, admin: access.admin })      
     });    
+}
+
+function show (req, res, next) {
+    const id = req.params.user;
+    let result = '';
+    Account.findOne({_id: id}, function(err, access) {
+        Account.find({}, function(err, account) {
+            res.render('user/show', {admin: access.admin, user: id, account})
+        })     
+    })    
 }
 
 module.exports = {
     createUser,
     index,
+    show,
 }

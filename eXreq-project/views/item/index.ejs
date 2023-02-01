@@ -16,14 +16,16 @@
   <body>
     <%- include('../partials/header') %>
     <form action="/additem/<%= user %>" method="POST">
-        <label>Item Number</label><br>
-        <input type="text" name="item-no">
+      <a href="/form/additem/allitems/<%= user %>">All Items</a> 
+      <br><br> 
+      <label>Item Number</label><br>
+        <input type="text" name="itemNum">
         <br><br>
         <label>Description</label><br>
         <input type="text" name="description">
         <br><br>
         <label>Currency</label><br>
-        <select name="access">
+        <select name="currency">
             <option value="CAD">CAD</option>
             <option value="USD">USD</option>
         </select>

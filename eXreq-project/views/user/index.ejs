@@ -16,6 +16,8 @@
   <body>
     <%- include('../partials/header') %>
     <form action="/adduser/<%= user %>" method="POST">
+        <a href="/form/adduser/alluser/<%= user %>">All Users</a>
+        <br><br>
         <label>Email</label><br>
         <input type="email" name="email">
         <br><br>

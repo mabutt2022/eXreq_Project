@@ -6,6 +6,6 @@ var formCtrl = require('../../controller/form');
 router.get("/form/:user/", formCtrl.index);
 
 router.post('/form/:user/', formCtrl.createForm)
-
+router.post('/form/:user/data', formCtrl.addLine)
 
 module.exports = router;

@@ -2,15 +2,9 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const otherSchema = new Schema ({
-  Other: []
-  },
-  {
-    timestamps: true,
-  });
-
-const formSchema = new Schema ({
-    userId: {type: Schema.Types.ObjectId},
+const versionSchema = new Schema ({
+    version: Number,
+    userId: Schema.Types.ObjectId,
     name: String,
     department: String,
     category: String,
@@ -19,18 +13,12 @@ const formSchema = new Schema ({
     requestDate: Date,
     clientProject: String,
     projectInfo: String,
-    otherFields: [otherSchema],
+    formVersion: [],
     item: [
       {
         type: Schema.Types.ObjectId,
         ref: 'Item'
       }
-    ],
-    version: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: 'Version'
-        }
     ]
   },
   {
@@ -39,4 +27,4 @@ const formSchema = new Schema ({
   );
 
 
-module.exports = mongoose.model("Form", formSchema);
+module.exports = mongoose.model("Version", versionSchema);

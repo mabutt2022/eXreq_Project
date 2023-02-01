@@ -11,64 +11,82 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+    <script defer src="/javascripts/expFunc.js"></script>
     <title>Expense Form</title>
   </head>
   <body>
     <%- include('../partials/header') %>
-    <form action='/form/<%= user %>/' method="POST">
-      <label>Name</label><br />
-      <input type="text" name="name" />
-      <br /><br />
-      <label>Department</label><br />
-      <input type="text" name="department" />
-      <br /><br />
-      <label>Category</label><br />
-      <select name="category">
-        <option value="RFC">RFC</option>
-      </select>
-      <br /><br />
-      <label>Criteria</label><br />
-      <input
-        type="radio"
-        name="serviceYear"
-        id="oneYear"
-        value="Does this asset has one year of Life"
-      />
-      <label for="oneYear">Does this asset has one year of Life</label><br />
-      <input
-        type="radio"
-        name="serviceYear"
-        id="nYear"
-        value="Does this asset has less than one year Life"
-      />
-      <label for="nYear">Does this asset has less than one year Life</label>
-      <br /><br />
-      <label>Document Name</label><br />
-      <input type="text" name="documentName" />
-      <br /><br />
-      <label>Request Date</label><br />
-      <input type="Date" name="requestDate" />
-      <br /><br />
-      <label>Is this a Client Project</label><br />
-      <select name="clientProject">
-        <option value="YES">Yes</option>
-        <option value="NO">No</option>
-      </select>
-      <br /><br />
-      <label>Project Explanation</label><br />
-      <input type="text" name="projectInfo" />
-      <br /><br />
-      <label>Procurement Items</label><br />
-      <select name="purchaseItem">
-        <!-- this will be where the options will be created and will be linked to procurement table -->
-        <option>Pipes</option>
-        <option>Furniture</option>
-      </select>
-      <br /><br />
-      <label>Purpose</label><br />
-      <input type="text" name="purpose" />
-      <br /><br />
-      <input type="submit" value="Submit" />
-    </form>
+    <form action="/form/<%= user %>/" method="POST">
+      <input type="hidden" name="userId" value="<%= user %>">
+    <label>Name</label><br />
+    <input type="text" name="name"  />
+    <br /><br />
+    <label>Department</label><br />
+    <input type="text" name="department"  />
+    <br /><br />
+    <label>Category</label><br />
+    <select name="category" >
+      <option value="RFC">RFC</option>
+    </select>
+    <br /><br />
+    <label>Criteria</label><br />
+    <input
+      type="radio"
+      name="serviceYear"
+      id="oneYear"
+      value="Does this asset has one year of Life"
+      
+    />
+    <label for="oneYear">Does this asset has one year of Life</label><br />
+    <input
+      type="radio"
+      name="serviceYear"
+      id="nYear"
+      value="Does this asset has less than one year Life"      
+    />
+    <label for="nYear">Does this asset has less than one year Life</label>
+    <br /><br />
+    <label>Document Name</label><br />
+    <input type="text" name="documentName" />
+    <br /><br />
+    <label>Request Date</label><br />
+    <input type="Date" name="requestDate" />
+    <br /><br />
+    <label>Is this a Client Project</label><br />
+    <select name="clientProject" >
+      <option value="YES">Yes</option>
+      <option value="NO">No</option>
+    </select>
+    <br /><br />
+    <label>Project Explanation</label><br />
+    <input type="text" name="projectInfo" />
+    <br /><br />
+    <label>Procurement Items</label><br />
+    <select id="baseVal">
+      <% item.forEach((el, idx) => { %>
+      <option
+        value="<%= el._id %>-<%= el.description %>-<%= el.currency %>-<%= el.cost %>">
+        <%= el.description %>
+      </option>
+      <% }) %>
+    </select>
+    <button id="addItemButton" form="something">Add Item</button>
+    <input type="hidden" value="" id="list" name="item">
+    <div id="addTable">
+      <table id="table">
+        
+      </table>
+    </div>
+    <br /><br />
+    <label>Purpose</label><br />
+    <input type="text" name="purpose" />
+    <br /><br />
+    <input type="submit" value="Submit"/>
+  </form>
   </body>
 </html>
