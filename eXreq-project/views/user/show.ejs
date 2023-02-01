@@ -31,6 +31,7 @@
           <td><%= el.email %></td>
           <td><%= pass.repeat(el.password.length) %></td>
           <td><%= el.admin %></td>
+          <td><a href="/form/adduser/alluser/<%= user %>/deleteuser/<%= el._id %>">Delete</a></td>
         </tr>
       <% }) %>
       </tbody>

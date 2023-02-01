@@ -7,7 +7,11 @@ router.get("/form/:user/", formCtrl.index);
 router.get("/form/:user/submittedForm", formCtrl.show);
 router.get("/form/:user/submittedForm/:view", formCtrl.view);
 
-router.post('/form/:user/', formCtrl.createForm)
-router.post('/form/:user/data', formCtrl.addLine)
+router.get('/form/:user/deleteform/:form', formCtrl.deleteForm);
+
+router.post('/form/:user/', formCtrl.createForm);
+router.post('/form/:user/data', formCtrl.addLine);
+
+
 
 module.exports = router;

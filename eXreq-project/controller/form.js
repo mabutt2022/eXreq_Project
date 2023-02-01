@@ -2,6 +2,7 @@ const Account = require("../model/account");
 const Form = require("../model/forms");
 const Version = require("../model/version");
 const Item = require("../model/procurement");
+const forms = require("../model/forms");
 
 function authenticate(req, res, next) {
   console.log(req.body);
@@ -34,7 +35,7 @@ function index(req, res, next) {
 function show(req, res, next) {
   const id = req.params.user;
   Account.findOne({ _id: id }, function (err, access) {
-    Form.find({}, function (err, forms) {
+    Form.find({userId: id}, function (err, forms) {
       res.render("form/show", {
         title: "submission-form",
         forms,
@@ -83,6 +84,17 @@ function addLine(req, res, next) {
   res.redirect(`/form/${req.params.user}/`);
 }
 
+function deleteForm(req, res, next) {
+  Account.findOne({ _id: req.params.user }, function (err, account) {
+    Form.deleteOne({userId: req.params.user, _id: req.params.form}, function(err) {
+      Form.find({userId: req.params.user}, function (err, forms) {
+          res.render("form/show", {admin: account.admin, user: account._id, forms});
+        }
+      );
+    })    
+  });
+}
+
 module.exports = {
   authenticate,
   createForm,
@@ -90,4 +102,5 @@ module.exports = {
   addLine,
   show,
   view,
+  deleteForm,
 };

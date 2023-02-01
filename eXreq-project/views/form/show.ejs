@@ -21,27 +21,31 @@
   </head>
   <body>
     <%- include('../partials/header') %>
-    <br><br>
+    <br /><br />
     <table>
-        <thead>
-          <th>Document Name</th>
-          <th>Department</th>
-          <th>Category</th>
-          <th>Requested Date</th>
-        </thead>
-        <tbody>
-          <tr>
-            <% forms.forEach(el => { %>
-            <td><%= el.documentName %></td>
-            <td><%= el.department %></td>
-            <td><%= el.category %></td>
-            <td><%= el.requestDate.toLocaleString() %></td>
-            <td><a href="/form/<%= user %>/submittedForm/<%= el._id %>">View</a></td>
-            <td><a href="???">Update</a></td>
-            <td><a href="???">Delete</a></td>
-          </tr>
+      <thead>
+        <th>Document Name</th>
+        <th>Department</th>
+        <th>Category</th>
+        <th>Requested Date</th>
+      </thead>
+      <tbody>
+        <tr>
+          <% forms.forEach(el => { %>
+          <td><%= el.documentName %></td>
+          <td><%= el.department %></td>
+          <td><%= el.category %></td>
+          <td><%= el.requestDate.toLocaleString() %></td>
+          <td>
+            <a href="/form/<%= user %>/submittedForm/<%= el._id %>">View</a>
+          </td>
+          <td><a href="???">Update</a></td>
+          <td>
+            <a href="/form/<%= user %>/deleteform/<%= el._id %>">Delete</a>
+          </td>
+        </tr>
         <% }) %>
-        </tbody>
-      </table>
-</body>
+      </tbody>
+    </table>
+  </body>
 </html>
