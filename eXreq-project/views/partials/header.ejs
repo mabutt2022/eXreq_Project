@@ -17,7 +17,7 @@
   <body>
     <nav >      
       <a class="nav-link" href="/form/<%= user %>">Forms</a>
-      <a class="nav-link" href="/form/<%= user %>">Submitted Forms</a>      
+      <a class="nav-link" href="/form/<%= user %>/submittedForm">Submitted Forms</a>      
       <% if (admin === 'Y') {%> <a class="nav-link" href="/form/additem/<%= user %>">Add Item</a><% } %> 
       <% if (admin === 'Y') {%> <a class="nav-link" href="/form/adduser/<%= user %>">Add User</a><% } %>      
       <a class="nav-link" href="/">Log Out </a>

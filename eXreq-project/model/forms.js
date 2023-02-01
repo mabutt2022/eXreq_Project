@@ -19,6 +19,7 @@ const formSchema = new Schema ({
     requestDate: Date,
     clientProject: String,
     projectInfo: String,
+    purpose: String,
     otherFields: [otherSchema],
     item: [
       {
