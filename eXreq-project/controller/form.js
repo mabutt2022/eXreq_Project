@@ -3,6 +3,7 @@ const Form = require("../model/forms");
 const Version = require("../model/version");
 const Item = require("../model/procurement");
 const forms = require("../model/forms");
+const passport = require('passport');
 
 function authenticate(req, res, next) {
   console.log(req.body);
@@ -31,6 +32,9 @@ function index(req, res, next) {
     });
   });
 }
+
+
+
 
 function show(req, res, next) {
   const id = req.params.user;
