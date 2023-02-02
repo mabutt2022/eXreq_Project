@@ -41,12 +41,13 @@
     <title>Form</title>
   </head>
   <body>
-    <nav class="navbar bg-dark" data-bs-theme="dark">      
+    <nav class="navMenu">      
       <a href="/form/<%= user %>">Forms</a>
       <a href="/form/<%= user %>/submittedForm">Submitted Forms</a>      
       <% if (admin === 'Y') {%> <a href="/form/additem/<%= user %>">Add Item</a><% } %> 
       <% if (admin === 'Y') {%> <a href="/form/adduser/<%= user %>">Add User</a><% } %>      
       <a href="/">Log Out </a>
+      <div class="dot"></div>
     
     </nav> 
     

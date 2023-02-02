@@ -40,28 +40,29 @@
     <script defer src="/javascripts/expFunc.js"></script>
     <title>All Items</title>
   </head>
-<body>
-  <%- include('../partials/header') %>
-  <h2>Current Items</h2>
-    
-    
-    <table>
-      <thead>
-        <th>Item Number</th>
-        <th>Description</th>
-        <th>Currency</th>
-        <th>Cost</th>
-      </thead>
-      <tbody>
-        <tr>
-          <% item.forEach(el => { %>
-          <td><%= el.itemNum %></td>
-          <td><%= el.description %></td>
-          <td><%= el.currency %></td>
-          <td><%= el.cost %></td>
-        </tr>
-      <% }) %>
-      </tbody>
-    </table>
-</body>
+  <body>
+    <%- include('../partials/header') %>
+    <div class="center">
+      <h2>Current Items</h2>
+
+      <table class="table table-hover">
+        <thead>
+          <th>Item Number</th>
+          <th>Description</th>
+          <th>Currency</th>
+          <th>Cost</th>
+        </thead>
+        <tbody>
+          <tr>
+            <% item.forEach(el => { %>
+            <td><%= el.itemNum %></td>
+            <td><%= el.description %></td>
+            <td><%= el.currency %></td>
+            <td><%= el.cost %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </body>
 </html>
