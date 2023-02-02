@@ -35,7 +35,7 @@ function index(req, res, next) {
 function show(req, res, next) {
   const id = req.params.user;
   Account.findOne({ _id: id }, function (err, access) {
-    Form.find({userId: id}, function (err, forms) {
+    Form.find({ userId: id }, function (err, forms) {
       res.render("form/show", {
         title: "submission-form",
         forms,
@@ -66,6 +66,7 @@ function view(req, res, next) {
   });
 }
 
+
 function createForm(req, res, next) {
   // const newForm = new Form(req.body);
   req.body.item = req.body.item.split(",");
@@ -86,14 +87,62 @@ function addLine(req, res, next) {
 
 function deleteForm(req, res, next) {
   Account.findOne({ _id: req.params.user }, function (err, account) {
-    Form.deleteOne({userId: req.params.user, _id: req.params.form}, function(err) {
-      Form.find({userId: req.params.user}, function (err, forms) {
-          res.render("form/show", {admin: account.admin, user: account._id, forms});
-        }
-      );
-    })    
+    Form.deleteOne(
+      { userId: req.params.user, _id: req.params.form },
+      function (err) {
+        Form.find({ userId: req.params.user }, function (err, forms) {
+          res.render("form/show", {
+            admin: account.admin,
+            user: account._id,
+            forms,
+          });
+        });
+      }
+    );
   });
 }
+
+function update(req, res, next) {
+  const id = req.params.user;
+  const formId = req.params.updateform;
+  console.log(formId);
+  Account.findOne({ _id: id }, function (err, access) {
+    Form.findOne({ _id: formId }, function (err, forms) {
+      Item.find({}, function (err, itemList) {
+        Form.findById(formId)
+          .populate("item")
+          .exec(function (err, item) {
+            res.render("form/update", {
+              title: "submission-form",
+              forms,
+              user: req.params.user,
+              admin: access.admin,
+              item,
+              itemList,
+            });
+          });
+      });
+    });
+  });
+}
+
+function updateForm(req, res, next) {
+  // console.log(req.body);
+  req.body.item = req.body.item.split(",");
+  Account.findOne({ _id: req.params.user }, function (err, access) {
+    Form.findOneAndUpdate({userId: req.params.user, _id:req.params.formId}, req.body, function (err, formOne) {
+      Form.find({ userId: req.params.user }, function (err, forms) {
+        res.render("form/show", {
+          title: "submission-form",
+          forms,
+          user: req.params.user,
+          admin: access.admin,
+        });
+      });
+    });
+  });
+}
+
 
 module.exports = {
   authenticate,
@@ -103,4 +152,6 @@ module.exports = {
   show,
   view,
   deleteForm,
+  update,
+  updateForm,
 };
