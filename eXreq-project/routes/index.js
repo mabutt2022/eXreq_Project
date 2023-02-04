@@ -10,19 +10,23 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/logout', function(req, res, next) {
-  req.logout(()=> {
-    res.redirect('/');
-  });
+  req.session.destroy(function(e) {
+    req.logout(()=> {
+      res.redirect("/");
+    });
+  })
+  
 });
 
 // Google OAuth login route
 router.get('/auth/google', passport.authenticate(
   'google',
   {
-    scope: ['profile', 'email']
+    scope: ['profile', 'email'],
+    failureRedirect: '/'
     // Optionally force pick account every time
     // prompt: "select_account"
-  },
+  }
 ));
 
 router.get('/oauth2callback', passport.authenticate(
@@ -42,11 +46,7 @@ router.get('/oauth2callback', passport.authenticate(
 
 
 // OAuth logout route
-router.get('/logout', function(req, res){
-  req.logout(function() {
-    res.redirect('/');
-  });
-});
+router.get('/logout', indexCtrl.logout);
 
 router.post('/login', indexCtrl.authenticate)
 

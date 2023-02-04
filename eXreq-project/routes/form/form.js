@@ -11,6 +11,7 @@ router.get('/form/:user/deleteform/:form', formCtrl.deleteForm);
 
 router.post('/form/:user/', formCtrl.createForm);
 router.post('/form/:user/data', formCtrl.addLine);
+router.post("/form/:user/submittedForm/:view/version", formCtrl.version);
 router.put('/form/:user/updateForm/:formId', formCtrl.updateForm);
 
 

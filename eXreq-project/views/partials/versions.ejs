@@ -38,30 +38,41 @@
       crossorigin="anonymous"
     ></script>
     <script defer src="/javascripts/expFunc.js"></script>
-    <title>Add a User</title>
+    <title>Version</title>
   </head>
   <body>
-    <%- include('../partials/header') %>
-    <div class="center">
-    <form action="/adduser/<%= user %>" method="POST">
-        <a href="/form/adduser/alluser/<%= user %>"><button class="btn btn-outline-secondary">All Users</button></a>
-        <br><br>
-        <label>Name</label><br>
-        <input type="text" name="name">
-        <br><br>
-        <label>Email</label><br>
-        <input type="email" name="email">
-        <br><br>
-        <label>Password</label><br>
-        <input type="password" name="password">
-        <br><br>
-        <label>Admin User</label><br>
-        <select name="admin">
-            <option value="Y">Y</option>
-            <option value="N">N</option>
-        </select><br><br>
-        <input type="submit" value="Add User">
+    <form action="/form/<%= user %>/submittedForm/<%= forms._id %>/version" method="POST">
+    
+    <% let totalList = ['Current'] %>
+    <% forms.version.forEach((el, idx) => { %>
+      <% totalList.push(idx+1) %>
+      <% }) %>
+    <% let temp; %>
+    <% let current = 'Current' %>
+
+
+    <select id="baseVal" class="form-select info-item" name="version">
+      
+        <option> 
+          <% try { %>
+          <%= verForm.versionNum %>
+          <% temp = totalList.indexOf(verForm.versionNum); %>
+          <% totalList.splice(temp, 1); %>
+          
+          <% } catch(err) { %>
+          <%=  current %>
+          <% temp = totalList.indexOf('Current') %>
+          <% totalList.splice(temp, 1); %>
+          
+          <% } %>
+        </option>
+        <% totalList.forEach(el => { %>
+          <option>
+            <%= el %>
+          </option>
+        <% }) %>
+      </select>
+      <input type="submit" class="btn btn-outline-success" value="Go To">
     </form>
-  </div>
-  </body>
+</body>
 </html>

@@ -38,80 +38,78 @@
       crossorigin="anonymous"
     ></script>
     <script defer src="/javascripts/expFunc.js"></script>
-    <title>Expense Form</title>
+    <title>Older Versions</title>
   </head>
   <body>
+
     <%- include('../partials/header') %>
-    <div class="img">
+    <div class="center1">
+    <%- include('../partials/versions') %>
     </div>
     <div class="center">
-    <form action="/form/<%= user %>/" method="POST">
-      <input type="hidden" name="userId" value="<%= user %>" />
+    <br><br>
+    <form>
+        <input type="hidden" name="userId" value="<%= user %>">
       <label class="form-label">Name</label><br />
-      <input type="text" name="name" class="form-control" value="<%= name %>" readonly/>
+      <input class="form-control" type="text" name="name"  value="<%= verForm.name %>" readonly/>
       <br /><br />
       <label class="form-label">Department</label><br />
-      <input type="text" name="department" class="form-control" />
+      <input class="form-control" type="text" name="department" value="<%= verForm.department %>" readonly/>
       <br /><br />
       <label class="form-label">Category</label><br />
-      <select name="category" class="form-select">
+      <select name="category" value="<%= verForm.category %>" readonly>
         <option value="RFC">RFC</option>
-      </select>
+      </select class="form-select">
       <br /><br />
       <label class="form-check-label">Criteria</label><br />
       <input
         type="radio"
-        class="form-check-input"
         name="serviceYear"
         id="oneYear"
-        value="Does this asset has one year of Life"
+        checked
+        value="<%= verForm.serviceYear %>" readonly        
       />
-      <label class="form-check-label" for="oneYear">Does this asset has one year of Life</label><br />
-      <input
-        type="radio"
-        class="form-check-input"
-        name="serviceYear"
-        id="nYear"
-        value="Does this asset has less than one year Life"
-      />
-      <label class="form-label" for="nYear">Does this asset has less than one year Life</label>
+      <label class="form-label" for="oneYear"><%= verForm.serviceYear %></label><br />
       <br /><br />
       <label class="form-label">Document Name</label><br />
-      <input type="text" name="documentName" class="form-control" />
+      <input class="form-control" type="text" name="documentName" value="<%= verForm.documentName %>" readonly/>
       <br /><br />
       <label class="form-label">Request Date</label><br />
-      <input type="Date" name="requestDate" class="form-control" />
+      <input class="form-control" type="text" name="requestDate" value="<%= verForm.requestDate.toLocaleString() %>" readonly/>
       <br /><br />
       <label class="form-label">Is this a Client Project</label><br />
-      <select name="clientProject" class="form-select">
-        <option value="YES">Yes</option>
-        <option value="NO">No</option>
+      <select class="form-select" name="clientProject" >
+        <option value="<%= verForm.clientProject %>" readonly><%= forms.clientProject %></option>
       </select>
       <br /><br />
       <label class="form-label">Project Explanation</label><br />
-      <input type="text" name="projectInfo" class="form-control" />
+      <input class="form-control" type="text" name="projectInfo" value="<%= verForm.projectInfo %>" readonly/>
       <br /><br />
       <label class="form-label">Procurement Items</label><br />
-      <select id="baseVal" class="form-select info-item">
-        <% item.forEach((el, idx) => { %>
-        <option
-          value="<%= el._id %>-<%= el.description %>-<%= el.currency %>-<%= el.cost %>"
-        >
-          <%= el.description %>
-        </option>
-        <% }) %>
-      </select>
-      <button id="addItemButton" form="something" class="btn btn-outline-secondary button1">Add Item</button>
-      <br><br>
-      <input type="hidden" value="" id="list" name="item" class="form-control" />
       <div id="addTable">
-        <table id="table" class="table table-hover"></table>
+        <table id="table" class="table table-hover">
+            <thead>
+                <th>Item Number</th>
+                <th>Description</th>
+                <th>Currency</th>
+                <th>Cost</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <% item.item.forEach(el => { %>
+                  <td><%= el.itemNum %></td>
+                  <td><%= el.description %></td>
+                  <td><%= el.currency %></td>
+                  <td><%= el.cost %></td>
+                </tr>
+              <% }) %>
+              </tbody>
+        </table>
       </div>
-      <br />
-      <label class="form-label">Purpose</label><br />
-      <textarea name="purpose" class="form-control" ></textarea>
       <br /><br />
-      <input type="submit" value="Submit" class="btn btn-outline-success"/>
+      <label class="form-label">Purpose</label><br />
+      <input class="form-control" type="text" name="purpose" value="<%= verForm.purpose %>" readonly>
+      <br /><br />
     </form>
   </div>
   </body>

@@ -42,57 +42,59 @@
   </head>
   <body>
     <%- include('../partials/header') %>
+    <div class="center">
     <br /><br />
     <form action="/form/<%= user %>/updateForm/<%= forms._id %>?_method=PUT" method="POST" autocomplete="off">
       <input type="hidden" name="userId" value="<%= user %>" />
-      <label>Name</label><br />
-      <input type="text" name="name" value="<%= forms.name %>" />
+      <label class="form-label">Name</label><br />
+      <input class="form-control" type="text" name="name" value="<%= forms.name %>" />
       <br /><br />
-      <label>Department</label><br />
-      <input type="text" name="department" value="<%= forms.department %>" />
+      <label class="form-label">Department</label><br />
+      <input class="form-control" type="text" name="department" value="<%= forms.department %>" />
       <br /><br />
-      <label>Category</label><br />
-      <select name="category" value="<%= forms.category %>">
+      <label class="form-label">Category</label><br />
+      <select class="form-select" name="category" value="<%= forms.category %>">
         <option value="RFC">RFC</option>
       </select>
       <br /><br />
-      <label>Criteria</label><br />
+      <label class="form-check-label">Criteria</label><br />
       <input
         type="radio"
         name="serviceYear"
         id="oneYear"
         value="Does this asset has one year of Life"
       />
-      <label for="oneYear">Does this asset has one year of Life</label><br />
+      <label class="form-check-label" for="oneYear">Does this asset has one year of Life</label><br />
       <input
         type="radio"
         name="serviceYear"
         id="nYear"
         value="Does this asset has less than one year Life"
       />
-      <label for="nYear">Does this asset has less than one year Life</label>
+      <label class="form-label" for="nYear">Does this asset has less than one year Life</label>
       <br /><br />
-      <label>Document Name</label><br />
+      <label class="form-label">Document Name</label><br />
       <input
         type="text"
         name="documentName"
+        class="form-control"
         value="<%= forms.documentName %>"
       />
       <br /><br />
-      <label>Request Date</label><br />
-      <input type="Date" name="requestDate" />
+      <label class="form-label">Request Date</label><br />
+      <input class="form-control" type="Date" name="requestDate" />
       <br /><br />
-      <label>Is this a Client Project</label><br />
-    <select name="clientProject" >
+      <label class="form-label">Is this a Client Project</label><br />
+    <select class="form-select" name="clientProject" >
       <option value="YES">Yes</option>
       <option value="NO">No</option>
     </select>
       <br /><br />
-      <label>Project Explanation</label><br />
-      <input type="text" name="projectInfo" value="<%= forms.projectInfo %>" />
+      <label class="form-label">Project Explanation</label><br />
+      <input class="form-control" type="text" name="projectInfo" value="<%= forms.projectInfo %>" />
       <br /><br />
-      <label>Procurement Items</label><br />
-      <select id="baseVal">
+      <label class="form-label">Procurement Items</label><br />
+      <select class="form-select" id="baseVal">
         <% itemList.forEach((el, idx) => { %>
         <option
           value="<%= el._id %>-<%= el.description %>-<%= el.currency %>-<%= el.cost %>">
@@ -101,17 +103,18 @@
         <% }) %>
       </select>
       <button id="addItemButton" form="something" class="btn btn-outline-secondary button1">Add Item</button>
-    <input type="hidden" value="" id="list" name="item">
+    <input class="form-control" type="hidden" value="" id="list" name="item">
     <div id="addTable">
       <table id="table">
         
       </table>
     </div>
     <br /><br />
-      <label>Purpose</label><br />
-      <input type="text" name="purpose" value="<%= forms.purpose %>" />
+      <label class="form-label">Purpose</label><br />
+      <input class="form-control" type="text" name="purpose" value="<%= forms.purpose %>" />
       <br /><br />
-      <input type="submit" value="Update" class="btn btn-outline-success"/>
+      <input class="form-control" type="submit" value="Update" class="btn btn-outline-success"/>
     </form>
+  </div>
   </body>
 </html>

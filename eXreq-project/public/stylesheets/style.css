@@ -82,6 +82,12 @@ nav > a.active {
   margin-bottom: 10%;
 }
 
+.center1 {
+  width: 50%;
+  margin: auto;
+  margin-top: 5%;
+}
+
 input,
 label,
 option,

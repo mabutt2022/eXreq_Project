@@ -12,6 +12,7 @@ const otherSchema = new Schema ({
 const formSchema = new Schema ({
     userId: {type: Schema.Types.ObjectId},
     name: String,
+    documentId: {type: Schema.Types.ObjectId},
     department: String,
     category: String,
     serviceYear: String,

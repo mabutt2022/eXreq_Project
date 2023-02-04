@@ -42,8 +42,9 @@
   </head>
   <body>
     <%- include('../partials/header') %>
+    <div class="center">
     <form action="/additem/<%= user %>" method="POST">
-      <a class="a-ref" href="/form/additem/allitems/<%= user %>">All Items</a> 
+      <a class="a-ref" href="/form/additem/allitems/<%= user %>"><button class="btn btn-outline-secondary">All Items</button></a> 
       <br><br> 
       <label>Item Number</label><br>
         <input type="text" name="itemNum">
@@ -62,5 +63,6 @@
         <br><br>
         <input type="submit" value="Submit">
     </form>
+  </div>
   </body>
 </html>

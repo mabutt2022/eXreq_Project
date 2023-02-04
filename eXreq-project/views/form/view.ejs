@@ -43,21 +43,25 @@
   <body>
 
     <%- include('../partials/header') %>
+    <div class="center1">
+    <%- include('../partials/versions') %>
+    </div>
+    <div class="center">
     <br><br>
     <form>
         <input type="hidden" name="userId" value="<%= user %>">
-      <label>Name</label><br />
-      <input type="text" name="name"  value="<%= forms.name %>" readonly/>
+      <label class="form-label">Name</label><br />
+      <input class="form-control" type="text" name="name"  value="<%= forms.name %>" readonly/>
       <br /><br />
-      <label>Department</label><br />
-      <input type="text" name="department" value="<%= forms.department %>" readonly/>
+      <label class="form-label">Department</label><br />
+      <input class="form-control" type="text" name="department" value="<%= forms.department %>" readonly/>
       <br /><br />
-      <label>Category</label><br />
+      <label class="form-label">Category</label><br />
       <select name="category" value="<%= forms.category %>" readonly>
         <option value="RFC">RFC</option>
-      </select>
+      </select class="form-select">
       <br /><br />
-      <label>Criteria</label><br />
+      <label class="form-check-label">Criteria</label><br />
       <input
         type="radio"
         name="serviceYear"
@@ -65,23 +69,23 @@
         checked
         value="<%= forms.serviceYear %>" readonly        
       />
-      <label for="oneYear"><%= forms.serviceYear %></label><br />
+      <label class="form-label" for="oneYear"><%= forms.serviceYear %></label><br />
       <br /><br />
-      <label>Document Name</label><br />
-      <input type="text" name="documentName" value="<%= forms.documentName %>" readonly/>
+      <label class="form-label">Document Name</label><br />
+      <input class="form-control" type="text" name="documentName" value="<%= forms.documentName %>" readonly/>
       <br /><br />
-      <label>Request Date</label><br />
-      <input type="text" name="requestDate" value="<%= forms.requestDate.toLocaleString() %>" readonly/>
+      <label class="form-label">Request Date</label><br />
+      <input class="form-control" type="text" name="requestDate" value="<%= forms.requestDate.toLocaleString() %>" readonly/>
       <br /><br />
-      <label>Is this a Client Project</label><br />
-      <select name="clientProject" >
+      <label class="form-label">Is this a Client Project</label><br />
+      <select class="form-select" name="clientProject" >
         <option value="<%= forms.clientProject %>" readonly><%= forms.clientProject %></option>
       </select>
       <br /><br />
-      <label>Project Explanation</label><br />
-      <input type="text" name="projectInfo" value="<%= forms.projectInfo %>" readonly/>
+      <label class="form-label">Project Explanation</label><br />
+      <input class="form-control" type="text" name="projectInfo" value="<%= forms.projectInfo %>" readonly/>
       <br /><br />
-      <label>Procurement Items</label><br />
+      <label class="form-label">Procurement Items</label><br />
       <div id="addTable">
         <table id="table" class="table table-hover">
             <thead>
@@ -103,9 +107,10 @@
         </table>
       </div>
       <br /><br />
-      <label>Purpose</label><br />
-      <input type="text" name="purpose" value="<%= forms.purpose %>" readonly>
+      <label class="form-label">Purpose</label><br />
+      <input class="form-control" type="text" name="purpose" value="<%= forms.purpose %>" readonly>
       <br /><br />
     </form>
+  </div>
   </body>
 </html>

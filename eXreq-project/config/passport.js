@@ -2,6 +2,9 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const User = require('../model/user');
 const Account = require('../model/account');
+const indexCtrl = require('../controller/form');
+
+const { router } = require('../server');
 
 passport.use(
   new GoogleStrategy(
@@ -27,6 +30,15 @@ passport.use(
           // ELSE we need to create the user, and then continue with that usr in the cookie
 
           Account.findOne({email:profile.emails[0].value}, function (err, account) {
+            if (!account) {
+                
+                if (err) {console.log('checking')};
+                
+                
+
+                
+            } else {
+
             console.log(account);
             User.create({
                 name: profile.displayName,
@@ -36,6 +48,7 @@ passport.use(
                 avatar: profile.photos[0].value,
               }).then((newUser) => cb(null, newUser))
               .catch((err) => cb(err));
+            }
           })
           })           
     }

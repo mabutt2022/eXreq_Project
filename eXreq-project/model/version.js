@@ -3,8 +3,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const versionSchema = new Schema ({
-    version: Number,
     userId: Schema.Types.ObjectId,
+    documentId: Schema.Types.ObjectId,
+    versionNum: Number,
     name: String,
     department: String,
     category: String,
@@ -12,8 +13,8 @@ const versionSchema = new Schema ({
     documentName: String,
     requestDate: Date,
     clientProject: String,
-    projectInfo: String,
-    formVersion: [],
+    projectInfo: String,    
+    versNum: String,
     item: [
       {
         type: Schema.Types.ObjectId,
