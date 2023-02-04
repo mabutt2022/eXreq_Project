@@ -6,7 +6,7 @@ const forms = require("../model/forms");
 const passport = require("passport");
 
 function authenticate(req, res, next) {
-  console.log(req.body);
+  // console.log(req.body);
   Account.findOne({ email: req.body.email }, function (err, account) {
     if (
       req.body.email === account.email &&
@@ -69,7 +69,7 @@ function view(req, res, next) {
 }
 
 function version(req, res, next) {
-  console.log(req.body);
+  // console.log(req.body);
   const id = req.params.user;
   const formId = req.params.view;
   let verObjId;
@@ -85,9 +85,9 @@ function version(req, res, next) {
           .populate("version")
           .exec(function (err, ver) {
             ver.version.forEach((el) => {
-              console.log(el.versionNum);
+              // console.log(el.versionNum);
               if (el.versionNum === req.body.version) {
-                console.log('done')
+                // console.log('done')
                 verObjId = el._id;
               }
               if (verObjId) return;
@@ -127,9 +127,8 @@ function createForm(req, res, next) {
 }
 
 function addLine(req, res, next) {
-  console.log(req.body);
-  console.log(req.params.user);
-
+  // console.log(req.body);
+  // console.log(req.params.user);
   res.redirect(`/form/${req.params.user}/`);
 }
 

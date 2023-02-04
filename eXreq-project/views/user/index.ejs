@@ -43,8 +43,8 @@
   <body>
     <%- include('../partials/header') %>
     <div class="center">
-    <form action="/adduser/<%= user %>" method="POST">
-        <a href="/form/adduser/alluser/<%= user %>"><button class="btn btn-outline-secondary">All Users</button></a>
+      <a href="/form/adduser/alluser/<%= user %>"><button class="btn btn-outline-secondary">All Users</button></a>
+    <form action="/adduser/<%= user %>" method="POST">        
         <br><br>
         <label>Name</label><br>
         <input type="text" name="name">

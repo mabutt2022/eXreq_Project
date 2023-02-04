@@ -24,7 +24,7 @@ function show (req, res, next) {
     let result = '';
     Account.findOne({_id: id}, function(err, access) {
         Item.find({}, function(err, item) {
-            console.log(item);
+            // console.log(item);
             res.render('item/show', {admin: access.admin, user: id, item})
         })     
     })    
