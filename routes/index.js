@@ -18,7 +18,7 @@ router.get('/logout', function(req, res, next) {
     req.logout(()=> {
       // res.redirect("/");
       // res.redirect("https://mail.google.com/mail/u/0/?logout&hl=en")
-      res.redirect("https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:3000")
+      res.redirect(`https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=${process.env.LOG_OUT}`)
     });
   })
   
