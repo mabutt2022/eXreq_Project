@@ -1,4 +1,5 @@
 const Account = require("../model/account");
+const User = require("../model/user");
 
 function createUser(req, res, next) {
   // console.log(req.body);
@@ -34,13 +35,19 @@ function show(req, res, next) {
 function deleteUser(req, res, next) {
   var role = "";
   Account.deleteOne({ _id: req.params.delete }, function (err) {
-    Account.find({}, function (err, account) {
-      account.forEach((el) => {
-        if (String(el._id) === req.params.user) {
-          role = el.admin;
-        }
+    User.deleteOne({ databaseId: req.params.delete }, function (err) {
+      Account.find({}, function (err, account) {
+        account.forEach((el) => {
+          if (String(el._id) === req.params.user) {
+            role = el.admin;
+          }
+        });
+        res.render("user/show", {
+          admin: role,
+          user: req.params.user,
+          account,
+        });
       });
-      res.render("user/show", { admin: role, user: req.params.user, account });
     });
   });
 }

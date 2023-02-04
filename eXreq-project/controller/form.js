@@ -78,7 +78,6 @@ function version(req, res, next) {
 
   if (req.body.version === "Current") {    
     res.redirect(`/form/${id}/submittedForm/${formId}`);
-    console.log('hello')
   } else {
     req.body.version = parseInt(req.body.version);
     Account.findOne({ _id: id }, function (err, access) {
@@ -95,8 +94,8 @@ function version(req, res, next) {
               if (verObjId) return;
             });
             Version.findOne({ _id: verObjId }, function (err, verForm) {
-              console.log(verObjId);
-              console.log(verForm);
+              // console.log(verObjId);
+              // console.log(verForm);
               Version.findById(verObjId)
                 .populate("item")
                 .exec(function (err, item) {
@@ -123,7 +122,7 @@ function createForm(req, res, next) {
   const form = new Form(req.body);
   form.save(function (err, savedform) {
     if (err) console.log(err);
-    console.log(savedform);
+    // console.log(savedform);
     res.redirect(`/form/${req.params.user}/`);
   });
 }

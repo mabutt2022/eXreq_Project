@@ -42,7 +42,7 @@
   </head>
   <body>
     <form action="/form/<%= user %>/submittedForm/<%= forms._id %>/version" method="POST">
-    
+    <label class="form-label">Version:</label>
     <% let totalList = ['Current'] %>
     <% forms.version.forEach((el, idx) => { %>
       <% totalList.push(idx+1) %>
