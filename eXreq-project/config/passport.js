@@ -33,13 +33,12 @@ passport.use(
             if (!account) {
                 
                 if (err) {console.log('checking')};
-                
+                return cb(null, false);
                 
 
                 
             } else {
 
-            console.log(account);
             User.create({
                 name: profile.displayName,
                 databaseId: account._id,

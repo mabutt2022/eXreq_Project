@@ -21,8 +21,8 @@ function authenticate(req, res, next) {
 
 function index(req, res, next) {
   const id = req.params.user;
-  console.log(req.params.user);
-  console.log(typeof req.params.user);
+  // console.log(req.params.user);
+  // console.log(typeof req.params.user);
   Account.findOne({ _id: id }, function (err, access) {
     Item.find({}, function (err, item) {
       res.render("form/index", {

@@ -9,6 +9,10 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'eXreq' });
 });
 
+router.get('/test', function(req, res, next) {
+  res.render('test', { title: 'eXreq' });
+});
+
 router.get('/logout', function(req, res, next) {
   req.session.destroy(function(e) {
     req.logout(()=> {
@@ -25,9 +29,9 @@ router.get('/auth/google', passport.authenticate(
   'google',
   {
     scope: ['profile', 'email'],
-    failureRedirect: '/'
+    failureRedirect: '/',
     // Optionally force pick account every time
-    // prompt: "select_account"
+    prompt: "select_account"
   }
 ));
 
@@ -35,6 +39,8 @@ router.get('/oauth2callback', passport.authenticate(
   'google',
   {
     // successRedirect: '/',
+    // either below rules are fine - the prompt above method and below logout method
+    // failureRedirect: 'https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:3000'
     failureRedirect: '/'
   }),
   function(req, res) {
