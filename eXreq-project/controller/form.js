@@ -21,6 +21,8 @@ function authenticate(req, res, next) {
 
 function index(req, res, next) {
   const id = req.params.user;
+  console.log(req.params.user);
+  console.log(typeof req.params.user);
   Account.findOne({ _id: id }, function (err, access) {
     Item.find({}, function (err, item) {
       res.render("form/index", {
@@ -211,13 +213,6 @@ function updateForm(req, res, next) {
   });
 }
 
-function logout(req, res, next) {
-  req.logout((err) => {
-    if (err) return next(err);
-  });
-  res.redirect("/");
-}
-
 module.exports = {
   authenticate,
   createForm,
@@ -228,6 +223,5 @@ module.exports = {
   deleteForm,
   update,
   updateForm,
-  logout,
   version,
 };

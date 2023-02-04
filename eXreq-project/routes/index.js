@@ -12,7 +12,9 @@ router.get('/', function(req, res, next) {
 router.get('/logout', function(req, res, next) {
   req.session.destroy(function(e) {
     req.logout(()=> {
-      res.redirect("/");
+      // res.redirect("/");
+      // res.redirect("https://mail.google.com/mail/u/0/?logout&hl=en")
+      res.redirect("https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:3000")
     });
   })
   
@@ -45,8 +47,7 @@ router.get('/oauth2callback', passport.authenticate(
  
 
 
-// OAuth logout route
-router.get('/logout', indexCtrl.logout);
+
 
 router.post('/login', indexCtrl.authenticate)
 
