@@ -13,8 +13,7 @@ const versionSchema = new Schema ({
     documentName: String,
     requestDate: Date,
     clientProject: String,
-    projectInfo: String,    
-    versNum: String,
+    projectInfo: String, 
     item: [
       {
         type: Schema.Types.ObjectId,
