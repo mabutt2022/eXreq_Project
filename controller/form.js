@@ -7,14 +7,19 @@ const passport = require("passport");
 
 function authenticate(req, res, next) {
   // console.log(req.body);
+  
+  
   Account.findOne({ email: req.body.email }, function (err, account) {
-    if (
-      req.body.email === account.email &&
-      req.body.password === account.password
-    ) {
-      res.redirect(`/form/${account._id}`);
-    } else {
-      res.redirect("/");
+    try {
+      if (
+        req.body.email === account.email &&
+        req.body.password === account.password
+      ) {
+        res.redirect(`/form/${account._id}`);
+      }
+    }
+    catch(err) {
+      res.redirect(`${process.env.LOG_OUT}`)
     }
   });
 }
