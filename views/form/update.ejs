@@ -43,6 +43,7 @@
   <body>
     <%- include('../partials/header') %>
     <div class="center">
+      <h2>Update Form</h2>
     <br /><br />
     <form action="/form/<%= user %>/updateForm/<%= forms._id %>?_method=PUT" method="POST" autocomplete="off">
       <input type="hidden" name="userId" value="<%= user %>" />
@@ -105,7 +106,7 @@
       <button id="addItemButton" form="something" class="btn btn-outline-secondary button1">Add Item</button>
     <input class="form-control" type="hidden" value="" id="list" name="item">
     <div id="addTable">
-      <table id="table">
+      <table id="table" class="table table-hover">
         
       </table>
     </div>
