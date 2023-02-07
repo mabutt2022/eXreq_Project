@@ -41,7 +41,7 @@
 ### Further Enhancements in Future  
 * User should be able to create their own form from scratch.  
 * Admin will be able to assign approval limit based on the total dollar value of the expense form along with users who need to approve.   
-* User will be able to assign form to another user that he created on his user ID for use.  
+* User will be able to assign form to another user that exists in the database.  
 * User will be able to send form via app for approval to the existing user in the app database.  
 * User will be able to send the form via email to the approval with the "Approve" or "Decline" Buttone at top, and based on what approval selects the app will update the user accordingly (will require creation of application API)  
 * The app should be able to get live Currency exchange rate using Oanda App for any conversion where the item registered are of different currencies.  
