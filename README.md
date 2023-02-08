@@ -31,7 +31,9 @@
 * JavaScript  
 * CSS  
 * Express  
-* MongoDB  
+* MongoDB 
+* Mongoose  
+* Passport/Google Auth   
 * Heroku  
 
 ### Additional Resources
