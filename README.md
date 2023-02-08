@@ -30,6 +30,7 @@
 * HTML  
 * JavaScript  
 * CSS  
+* Bootstrap  
 * Express  
 * MongoDB 
 * Mongoose  
